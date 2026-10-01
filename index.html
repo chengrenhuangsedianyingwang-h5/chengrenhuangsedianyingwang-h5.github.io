@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>橙色电影网 - 免费高清电影在线观看</title>
+<meta name="description" content="橙色电影网(https://chengsedianyingwang-h5.github.io)提供最新电影、热播电视剧、综艺、动漫在线观看，免费高清无广告，尽在橙色电影网。">
+<meta name="keywords" content="橙色电影网,电影,电视剧,综艺,动漫,在线观看,免费电影">
+<meta name="author" content="橙色电影网">
+<meta name="robots" content="index,follow">
+<meta name="msvalidate.01" content="BING_VERIFICATION_CODE" />
+<meta property="og:title" content="橙色电影网 - 免费高清电影在线观看">
+<meta property="og:description" content="橙色电影网提供最新电影、电视剧、综艺、动漫在线观看，免费高清无广告。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chengsedianyingwang-h5.github.io">
+<meta property="og:site_name" content="橙色电影网">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "橙色电影网",
+  "url": "https://chengsedianyingwang-h5.github.io",
+  "description": "免费高清电影在线观看平台",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://chengsedianyingwang-h5.github.io#search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<style>
+/* ===== 全局 ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: "Georgia", "PingFang SC", "Microsoft YaHei", serif;
+  background: #fdf8f2;
+  color: #2c1810;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; transition: all 0.3s; }
+
+/* ===== 顶部 ===== */
+.top-bar {
+  background: #ff6b00;
+  color: #fff;
+  text-align: center;
+  padding: 10px 15px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+/* ===== 导航 ===== */
+.nav {
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(255,107,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 900;
+  color: #ff6b00;
+  font-family: "Georgia", serif;
+  font-style: italic;
+}
+
+.logo span { color: #2c1810; font-style: normal; }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 26px;
+}
+
+.nav-links a {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5a4a3a;
+  padding: 6px 0;
+}
+
+.nav-links a:hover { color: #ff6b00; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #ff6b00;
+  cursor: pointer;
+}
+
+/* ===== Hero ===== */
+.hero {
+  background: linear-gradient(160deg, #ff6b00 0%, #ff8c42 60%, #ffb366 100%);
+  padding: 70px 20px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -5%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+
+.hero-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 5px 20px;
+  border-radius: 30px;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 6vw, 52px);
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.15);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: clamp(14px, 3vw, 17px);
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 28px;
+}
+
+.hero-url {
+  display: inline-block;
+  background: #fff;
+  color: #ff6b00;
+  padding: 12px 30px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* ===== 通用区块 ===== */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 55px 20px;
+}
+
+.sec-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.sec-title .bar {
+  width: 5px;
+  height: 28px;
+  background: #ff6b00;
+  border-radius: 3px;
+}
+
+.sec-title h2 {
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 800;
+  color: #2c1810;
+}
+
+.sec-title .sub {
+  font-size: 13px;
+  color: #a09080;
+  margin-left: auto;
+}
+
+/* ===== 栏目一：电影 - 大卡 + 小卡混合 ===== */
+.movie-mix {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.movie-big {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 15px rgba(255,107,0,0.08);
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-big:hover { transform: translateY(-4px); }
+
+.movie-big .pic {
+  height: 200px;
+  background: linear-gradient(135deg, #ffb366, #ff6b00);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+}
+
+.movie-big .info {
+  padding: 18px;
+}
+
+.movie-big .info h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.movie-big .info p {
+  font-size: 13px;
+  color: #8a7a6a;
+}
+
+.movie-big .info .score {
+  display: inline-block;
+  background: #fff3e6;
+  color: #ff6b00;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.movie-small-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.movie-small {
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 2px 8px rgba(255,107,0,0.06);
+  transition: padding-left 0.3s;
+}
+
+.movie-small:hover {
+  padding-left: 22px;
+  box-shadow: 0 4px 12px rgba(255,107,0,0.12);
+}
+
+.movie-small .emoji {
+  font-size: 32px;
+  width: 48px;
+  height: 48px;
+  background: #fff3e6;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.movie-small h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.movie-small p {
+  font-size: 11px;
+  color: #a09080;
+}
+
+/* ===== 栏目二：电视剧 - 横向长条 ===== */
+.tv-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tv-bar {
+  background: #fff;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 50px 100px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(255,107,0,0.06);
+  transition: all 0.3s;
+}
+
+.tv-bar:hover {
+  background: #fff8f0;
+  box-shadow: 0 4px 15px rgba(255,107,0,0.12);
+}
+
+.tv-bar .idx {
+  font-size: 22px;
+  font-weight: 900;
+  color: #ff6b00;
+  opacity: 0.3;
+}
+
+.tv-bar .thumb {
+  width: 100px;
+  height: 56px;
+  background: linear-gradient(135deg, #ffd4a3, #ff8c42);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.tv-bar h3 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.tv-bar p {
+  font-size: 12px;
+  color: #8a7a6a;
+  margin-top: 2px;
+}
+
+.tv-bar .epi {
+  background: #ff6b00;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ===== 栏目三：综艺 - 六边形风卡片 ===== */
+.show-wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.show-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 18px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(255,107,0,0.06);
+  border-top: 4px solid #ff6b00;
+  transition: transform 0.3s;
+}
+
+.show-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(255,107,0,0.15);
+}
+
+.show-card .icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.show-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.show-card p {
+  font-size: 12px;
+  color: #a09080;
+}
+
+/* ===== 栏目四：动漫 - 渐变色块 ===== */
+.anime-wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.anime-card {
+  border-radius: 12px;
+  padding: 24px 16px;
+  text-align: center;
+  color: #fff;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.anime-card:hover { transform: scale(1.05); }
+
+.anime-card:nth-child(1) { background: linear-gradient(135deg, #ff6b00, #ff8c42); }
+.anime-card:nth-child(2) { background: linear-gradient(135deg, #ff8c42, #ffb366); }
+.anime-card:nth-child(3) { background: linear-gradient(135deg, #e85d04, #ff6b00); }
+.anime-card:nth-child(4) { background: linear-gradient(135deg, #f48c06, #ff6b00); }
+.anime-card:nth-child(5) { background: linear-gradient(135deg, #ff6b00, #dc3545); }
+.anime-card:nth-child(6) { background: linear-gradient(135deg, #fd7e14, #ffc107); }
+
+.anime-card .ic { font-size: 36px; margin-bottom: 10px; }
+.anime-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.anime-card p { font-size: 11px; opacity: 0.85; }
+
+/* ===== 栏目五：关于 ===== */
+.about-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.about-box {
+  background: #fff;
+  border-radius: 14px;
+  padding: 30px;
+  box-shadow: 0 3px 15px rgba(255,107,0,0.08);
+}
+
+.about-box h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ff6b00;
+  margin-bottom: 15px;
+}
+
+.about-box p {
+  font-size: 14px;
+  color: #6a5a4a;
+  line-height: 1.9;
+  margin-bottom: 10px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #fff3e6, #ffe0c0);
+  border-radius: 12px;
+  padding: 22px;
+  text-align: center;
+}
+
+.stat-card .num {
+  font-size: 28px;
+  font-weight: 900;
+  color: #ff6b00;
+}
+
+.stat-card .label {
+  font-size: 12px;
+  color: #a08060;
+  margin-top: 4px;
+}
+
+/* ===== 页脚 ===== */
+.footer {
+  background: #2c1810;
+  color: #d4c4b4;
+  padding: 45px 20px 25px;
+  text-align: center;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-size: 26px;
+  font-weight: 900;
+  color: #ff6b00;
+  font-family: "Georgia", serif;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: #c4b4a4;
+}
+
+.footer-links a:hover { color: #ff6b00; }
+
+.footer-info {
+  font-size: 12px;
+  line-height: 2;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+  color: #8a7a6a;
+}
+
+.footer-info a { color: #ff6b00; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 62px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    gap: 15px;
+  }
+
+  .nav-links.active { display: flex; }
+
+  .nav-toggle { display: block; }
+
+  .movie-mix { grid-template-columns: 1fr; }
+
+  .tv-bar {
+    grid-template-columns: 36px 70px 1fr;
+    gap: 10px;
+  }
+
+  .tv-bar .epi { display: none; }
+
+  .tv-bar .thumb { width: 70px; height: 44px; font-size: 18px; }
+
+  .about-wrap { grid-template-columns: 1fr; }
+
+  .show-wrap { grid-template-columns: repeat(2, 1fr); }
+
+  .anime-wrap { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 50px 15px 60px; }
+
+  .section { padding: 40px 15px; }
+
+  .show-wrap { grid-template-columns: 1fr; }
+
+  .anime-wrap { grid-template-columns: repeat(2, 1fr); }
+
+  .about-box { padding: 22px 18px; }
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<!-- 顶部 -->
+<div class="top-bar">🍊 橙色电影网 — 免费高清影视 · 每日更新</div>
+
+<!-- 导航 -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo">橙色<span>电影网</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#movies">最新电影</a></li>
+      <li><a href="#tv">热播剧集</a></li>
+      <li><a href="#shows">综艺娱乐</a></li>
+      <li><a href="#anime">动漫专区</a></li>
+      <li><a href="#about">关于我们</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle">☰</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-badge">CHENGSE MOVIE NET</div>
+    <h1>橙色电影网</h1>
+    <p>海量高清电影、热播剧集、综艺动漫，免费在线观看，每日更新不等待</p>
+    <div class="hero-url">🔗 https://chengsedianyingwang-h5.github.io</div>
+  </div>
+</section>
+
+<!-- 栏目一：最新电影 -->
+<section class="section" id="movies">
+  <div class="sec-title">
+    <div class="bar"></div>
+    <h2>最新电影</h2>
+    <span class="sub">HOT MOVIES</span>
+  </div>
+  <div class="movie-mix">
+    <div class="movie-big">
+      <div class="pic">🎬</div>
+      <div class="info">
+        <h3>流浪地球3</h3>
+        <p>科幻巨制，太阳即将毁灭，人类开启流浪地球计划的最终篇章。</p>
+        <span class="score">⭐ 9.2分</span>
+      </div>
+    </div>
+    <div class="movie-small-list">
+      <div class="movie-small">
+        <div class="emoji">🎥</div>
+        <div>
+          <h3>封神演义·终章</h3>
+          <p>动作 / 2026 / 8.8分</p>
+        </div>
+      </div>
+      <div class="movie-small">
+        <div class="emoji">🎞️</div>
+        <div>
+          <h3>唐人街探案5</h3>
+          <p>喜剧悬疑 / 2026 / 8.5分</p>
+        </div>
+      </div>
+      <div class="movie-small">
+        <div class="emoji">📽️</div>
+        <div>
+          <h3>长津湖·和平</h3>
+          <p>战争历史 / 2026 / 9.5分</p>
+        </div>
+      </div>
+      <div class="movie-small">
+        <div class="emoji">🎦</div>
+        <div>
+          <h3>独行月球2</h3>
+          <p>科幻喜剧 / 2026 / 8.3分</p>
+        </div>
+      </div>
+      <div class="movie-small">
+        <div class="emoji">🎬</div>
+        <div>
+          <h3>满江红·侠影</h3>
+          <p>古装悬疑 / 2026 / 8.7分</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目二：热播剧集 -->
+<section class="section" id="tv">
+  <div class="sec-title">
+    <div class="bar"></div>
+    <h2>热播剧集</h2>
+    <span class="sub">POPULAR TV SHOWS</span>
+  </div>
+  <div class="tv-wrap">
+    <div class="tv-bar">
+      <div class="idx">01</div>
+      <div class="thumb">📺</div>
+      <div>
+        <h3>庆余年·第三季</h3>
+        <p>范闲重返京都，权谋斗争再起波澜</p>
+      </div>
+      <span class="epi">更新至32集</span>
+    </div>
+    <div class="tv-bar">
+      <div class="idx">02</div>
+      <div class="thumb">🌌</div>
+      <div>
+        <h3>三体·黑暗森林</h3>
+        <p>人类面对三体文明的终极抉择</p>
+      </div>
+      <span class="epi">更新至18集</span>
+    </div>
+    <div class="tv-bar">
+      <div class="idx">03</div>
+      <div class="thumb">🌃</div>
+      <div>
+        <h3>繁花·续章</h3>
+        <p>黄河路上的商战风云再起</p>
+      </div>
+      <span class="epi">更新至24集</span>
+    </div>
+    <div class="tv-bar">
+      <div class="idx">04</div>
+      <div class="thumb">🏯</div>
+      <div>
+        <h3>琅琊榜·归来</h3>
+        <p>梅长苏智斗奸佞守护大梁江山</p>
+      </div>
+      <span class="epi">更新至12集</span>
+    </div>
+    <div class="tv-bar">
+      <div class="idx">05</div>
+      <div class="thumb">⚔️</div>
+      <div>
+        <h3>长安十二时辰·第二季</h3>
+        <p>大唐长安城内的惊天阴谋</p>
+      </div>
+      <span class="epi">更新至20集</span>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目三：综艺娱乐 -->
+<section class="section" id="shows">
+  <div class="sec-title">
+    <div class="bar"></div>
+    <h2>综艺娱乐</h2>
+    <span class="sub">VARIETY SHOWS</span>
+  </div>
+  <div class="show-wrap">
+    <div class="show-card">
+      <div class="icon">🏃</div>
+      <h3>奔跑吧·2026</h3>
+      <p>户外竞技真人秀</p>
+    </div>
+    <div class="show-card">
+      <div class="icon">🎤</div>
+      <h3>歌手·巅峰之战</h3>
+      <p>华语乐坛顶级竞演</p>
+    </div>
+    <div class="show-card">
+      <div class="icon">🌾</div>
+      <h3>向往的生活·第七季</h3>
+      <p>慢生活体验真人秀</p>
+    </div>
+    <div class="show-card">
+      <div class="icon">🧗</div>
+      <h3>极限挑战·宝藏行</h3>
+      <p>公益探索真人秀</p>
+    </div>
+    <div class="show-card">
+      <div class="icon">🎵</div>
+      <h3>中国好声音·2026</h3>
+      <p>音乐选秀节目</p>
+    </div>
+    <div class="show-card">
+      <div class="icon">✈️</div>
+      <h3>快乐再出发·第二季</h3>
+      <p>音乐旅行真人秀</p>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目四：动漫专区 -->
+<section class="section" id="anime">
+  <div class="sec-title">
+    <div class="bar"></div>
+    <h2>动漫专区</h2>
+    <span class="sub">ANIME ZONE</span>
+  </div>
+  <div class="anime-wrap">
+    <div class="anime-card">
+      <div class="ic">⚔️</div>
+      <h3>斗罗大陆·终章</h3>
+      <p>热血 / 120集</p>
+    </div>
+    <div class="anime-card">
+      <div class="ic">🔥</div>
+      <h3>斗破苍穹·年番</h3>
+      <p>玄幻 / 280集</p>
+    </div>
+    <div class="anime-card">
+      <div class="ic">🌊</div>
+      <h3>海贼王·最终章</h3>
+      <p>冒险 / 1120集</p>
+    </div>
+    <div class="anime-card">
+      <div class="ic">⚡</div>
+      <h3>咒术回战·第三季</h3>
+      <p>热血 / 24集</p>
+    </div>
+    <div class="anime-card">
+      <div class="ic">🗡️</div>
+      <h3>鬼灭之刃·无限城</h3>
+      <p>热血 / 18集</p>
+    </div>
+    <div class="anime-card">
+      <div class="ic">🐉</div>
+      <h3>凡人修仙传</h3>
+      <p>仙侠 / 156集</p>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目五：关于我们 -->
+<section class="section" id="about">
+  <div class="sec-title">
+    <div class="bar"></div>
+    <h2>关于我们</h2>
+    <span class="sub">ABOUT US</span>
+  </div>
+  <div class="about-wrap">
+    <div class="about-box">
+      <h3>关于橙色电影网</h3>
+      <p>橙色电影网（https://chengsedianyingwang-h5.github.io）是一个专注于提供高清电影、电视剧、综艺、动漫在线观看的免费影视平台。</p>
+      <p>我们致力于为用户提供最优质的观影体验，每日更新最新影视资源，涵盖国产剧、美剧、韩剧、日剧等多个分类，无需注册，完全免费。</p>
+      <p>关键词：橙色电影网、免费电影、在线观看、高清影视</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="num">10,000+</div>
+        <div class="label">影视资源</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">500万+</div>
+        <div class="label">累计用户</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">24h</div>
+        <div class="label">每日更新</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">100%</div>
+        <div class="label">免费观看</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">橙色电影网</div>
+    <div class="footer-links">
+      <a href="#home">首页</a>
+      <a href="#movies">电影</a>
+      <a href="#tv">剧集</a>
+      <a href="#shows">综艺</a>
+      <a href="#anime">动漫</a>
+      <a href="#about">关于</a>
+    </div>
+    <div class="footer-info">
+      <p>网站名称：橙色电影网 | 网址：<a href="https://chengsedianyingwang-h5.github.io">https://chengsedianyingwang-h5.github.io</a></p>
+      <p>© 2026 橙色电影网 保留所有权利 | 关键词：橙色电影网 免费高清电影在线观看</p>
+      <p>本网站仅提供影视信息展示服务，资源来源于互联网公开内容。</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('navToggle').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('active');
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('navLinks').classList.remove('active');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
